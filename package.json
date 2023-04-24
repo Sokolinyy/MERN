@@ -18,5 +18,8 @@
     "nodemon": "^2.0.22",
     "sass": "^1.62.0",
     "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
