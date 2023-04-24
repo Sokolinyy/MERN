@@ -32,7 +32,7 @@ const CreateBlog = () => {
 
     try {
       await axios.post(
-        "https://mern-sokolinyy.onrender.com/create-blog",
+        `${process.env.REACT_APP_API_URL}/create-blog`,
         formData
       );
       navigate("/");

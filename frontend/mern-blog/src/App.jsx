@@ -7,7 +7,9 @@ function App() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("https://mern-sokolinyy.onrender.com");
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/create-blog`
+        );
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);

@@ -8,7 +8,7 @@ const About = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://mern-sokolinyy.onrender.com/about"
+          `${process.env.REACT_APP_API_URL}/about`
         );
         setData(response.data);
       } catch (error) {
