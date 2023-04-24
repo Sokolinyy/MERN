@@ -9,7 +9,7 @@ const BlogList = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/create-blog");
+        const response = await axios.get("http://localhost:5000/");
         if (response.data.message) {
           setMessage(response.data.message);
         } else {
