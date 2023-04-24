@@ -7,7 +7,9 @@ const About = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/about");
+        const response = await axios.get(
+          "https://mern-sokolinyy.onrender.com/about"
+        );
         setData(response.data);
       } catch (error) {
         console.error("Error fetching about data:", error);

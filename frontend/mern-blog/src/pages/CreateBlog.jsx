@@ -31,7 +31,10 @@ const CreateBlog = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/create-blog", formData);
+      await axios.post(
+        "https://mern-sokolinyy.onrender.com/create-blog",
+        formData
+      );
       navigate("/");
     } catch (error) {
       console.error("Error creating blog post:", error);
