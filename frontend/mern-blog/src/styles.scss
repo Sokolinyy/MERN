@@ -29,6 +29,9 @@ html {
   height: 14vh;
   z-index: 100;
   background-color: white;
+  @media screen and (max-width: 500px) {
+    height: 18vh;
+  }
 
   .hamburger-menu {
     display: none;

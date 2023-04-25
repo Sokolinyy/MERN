@@ -10,7 +10,7 @@ const BlogList = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/create-blog`
+          "https://mern-sokolinyy.onrender.com/create-blog"
         );
         if (response.data.message) {
           setMessage(response.data.message);

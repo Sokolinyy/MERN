@@ -60,9 +60,6 @@ const Header = () => {
             <Link to="/" className="header_link" onClick={hideOverlay}>
               <li>Home</li>
             </Link>
-            <Link to="/about" className="header_link" onClick={hideOverlay}>
-              <li>About</li>
-            </Link>
             <Link
               to="/create-blog"
               className="header_link create"
