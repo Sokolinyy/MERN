@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
+  // Switch overlay back and forth
   const toggleOverlay = () => {
     setIsOverlayVisible(!isOverlayVisible);
 
+    // If overlay is true, disable scroll, else enable scroll
     if (!isOverlayVisible) {
       // Disable scrolling when the overlay is visible
       document.body.style.overflowY = "hidden";
@@ -19,9 +21,11 @@ const Header = () => {
   const hideOverlay = () => {
     setIsOverlayVisible(false);
 
+    // Enable scrolling
     document.body.style.overflowY = "auto";
   };
 
+  // If window width bigger that 800px - hide overlay
   const handleResize = () => {
     if (window.innerWidth >= 800) {
       hideOverlay();
@@ -40,9 +44,11 @@ const Header = () => {
   return (
     <header className="header">
       <div
+        // If hamburger menu was clicked, set class to close-icon, otherwise empty string
         className={`hamburger-menu ${isOverlayVisible ? "close-icon" : ""} `}
         onClick={toggleOverlay}
       >
+        {/* Three line of hamburger menu */}
         <div className="hamburger-line top-line"></div>
         <div className="hamburger-line middle-line"></div>
         <div className="hamburger-line bottom-line"></div>
@@ -55,6 +61,7 @@ const Header = () => {
       </div>
 
       <nav>
+        {/* If overlay was clicked, set class to "visible", otherwise "hidden" */}
         <div className={`overlay ${isOverlayVisible ? "visible" : "hidden"}`}>
           <ul className="header_items">
             <Link to="/" className="header_link" onClick={hideOverlay}>

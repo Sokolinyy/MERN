@@ -11,31 +11,39 @@ const CreateBlog = () => {
     theme: "",
     body: "",
   });
+  // For redirection users to home page, after clicked "Submit"
   const navigate = useNavigate();
 
+  // When any changes have occurred in the fields, setFormData to name and value of the fields
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
+    // Prevent the page from reloading
     e.preventDefault();
+
     const { imageUrl, title, theme, body } = formData;
 
-    // Check if all required fields are filled in
+    // Check if image field has symbol "/" if is not, show error
     if (!imageUrl.includes("/")) {
       setBlogError("Please provide an image URL");
       return;
     }
+    // Check if all required fields are filled in, if not, show error
     if (!title || !theme || !body) {
       setBlogError("Please fill in all required fields.");
     }
 
     try {
+      // Send a POST request with the form data to the API endpoint (backend)
       await axios.post(
         `https://mern-sokolinyy.onrender.com/create-blog`,
         formData
       );
+      // If the request is successful, navigate to the homepage
       navigate("/");
+      // If there's an error, log it to the console
     } catch (error) {
       console.error("Error creating blog post:", error);
     }
@@ -43,6 +51,7 @@ const CreateBlog = () => {
 
   return (
     <div className="form-container">
+      {/* Element for display an error */}
       {blogError && (
         <div className="blog-error">
           <svg
@@ -56,6 +65,7 @@ const CreateBlog = () => {
           <p>{blogError}</p>
         </div>
       )}
+      {/* Form */}
       <form onSubmit={handleSubmit}>
         <label htmlFor="imageUrl" id="imageUrl">
           Image URL:
