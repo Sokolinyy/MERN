@@ -374,3 +374,42 @@ html {
     }
   }
 }
+
+.blog-page {
+  margin-top: 14vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 0;
+  }
+
+  .image {
+    max-width: 520px;
+    max-height: 400px;
+    align-items: start;
+    object-fit: contain;
+  }
+
+  h2 {
+    color: rgb(79, 135, 142);
+    margin-bottom: 5px;
+  }
+
+  .blog-theme {
+    margin: 0;
+  }
+
+  .blog-body {
+    font-size: 22px;
+    padding: 0px 50px;
+    text-align: left;
+    padding-bottom: 100px;
+
+    @media screen and (max-width: 800px) {
+      padding: 0px 20px;
+    }
+  }
+}

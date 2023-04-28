@@ -7,6 +7,7 @@ import "./styles.scss";
 import CreateBlog from "./pages/CreateBlog.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
 import BlogList from "./Components/BlogList.jsx";
+import Blog from "./pages/BlogPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Header />
       <Routes>
         <Route path="/" element={<BlogList />} />
+        <Route path="/blog/:id" element={<Blog />} />
         <Route path="/create-blog" element={<CreateBlog />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

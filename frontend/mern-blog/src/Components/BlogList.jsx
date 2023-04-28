@@ -1,8 +1,11 @@
 // frontend/src/components/BlogList.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const BlogList = () => {
+  const navigate = useNavigate();
+
   const [blogs, setBlogs] = useState([]);
   const [message, setMessage] = useState("");
 
@@ -11,7 +14,7 @@ const BlogList = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          "https://mern-sokolinyy.onrender.com/create-blog"
+          "https://mern-sokolinyy.onrender.com/"
         );
         // If there is no blogs, display message from backend "There is no blogs"
         if (response.data.message) {
@@ -36,18 +39,30 @@ const BlogList = () => {
       ) : (
         // Otherwise map through blogs data, and display it on the page
         blogs.map((blog) => (
-          <div key={blog._id} className="blog-list-items">
-            <img src={blog.imageUrl} alt={blog.title} className="blog-image" />
-            <h2>{blog.title.toUpperCase()}</h2>
-            <p className="blog-snippet">{blog.theme.toUpperCase()}</p>
-            <div className="blog-content">
-              <div className="blog-body">
-                <p>
-                  {/* If length of character bigger then 37, add three dots */}
-                  {blog.body.length > 37
-                    ? blog.body.substring(0, 27) + "..."
-                    : blog.body}
-                </p>
+          <div className="blog-list-link">
+            <div
+              className="blog-list-items"
+              key={blog._id}
+              onClick={() => {
+                navigate(`/blog/${blog._id}`);
+              }}
+            >
+              <img
+                src={blog.imageUrl}
+                alt={blog.title}
+                className="blog-image"
+              />
+              <h2>{blog.title.toUpperCase()}</h2>
+              <p className="blog-snippet">{blog.theme.toUpperCase()}</p>
+              <div className="blog-content">
+                <div className="blog-body">
+                  <p>
+                    {/* If length of character bigger then 37, add three dots */}
+                    {blog.body.length > 37
+                      ? blog.body.substring(0, 37) + "..."
+                      : blog.body}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
