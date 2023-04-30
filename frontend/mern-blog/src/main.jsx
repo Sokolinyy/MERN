@@ -17,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<BlogList />} />
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/create-blog" element={<CreateBlog />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
   </React.StrictMode>

@@ -37,10 +37,7 @@ const CreateBlog = () => {
 
     try {
       // Send a POST request with the form data to the API endpoint (backend)
-      await axios.post(
-        `https://mern-sokolinyy.onrender.com/create-blog`,
-        formData
-      );
+      await axios.post(`http://localhost:4000/create-blog`, formData);
       // If the request is successful, navigate to the homepage
       navigate("/");
       // If there's an error, log it to the console
