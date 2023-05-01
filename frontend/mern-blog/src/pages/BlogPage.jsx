@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Comment from "../Components/Comment";
 
 const Blog = () => {
   const [blog, setBlog] = useState(null);
@@ -33,6 +34,7 @@ const Blog = () => {
       ) : (
         <p>Loading...</p>
       )}
+      <Comment blogId={id} />
     </div>
   );
 };

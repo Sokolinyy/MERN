@@ -37,10 +37,9 @@ const BlogList = () => {
       ) : (
         // Otherwise map through blogs data, and display it on the page
         blogs.map((blog) => (
-          <div className="blog-list-link">
+          <div className="blog-list-link" key={blog._id}>
             <div
               className="blog-list-items"
-              key={blog._id}
               onClick={() => {
                 navigate(`/blog/${blog._id}`);
               }}

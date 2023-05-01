@@ -8,6 +8,7 @@ import CreateBlog from "./pages/CreateBlog.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
 import BlogList from "./Components/BlogList.jsx";
 import Blog from "./pages/BlogPage";
+import Comment from "./Components/Comment";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
