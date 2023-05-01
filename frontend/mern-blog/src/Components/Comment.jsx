@@ -32,8 +32,8 @@ const Comment = ({ blogId }) => {
   console.log(comment);
 
   return (
-    <div>
-      <div>
+    <div className="comments-container">
+      <div className="comments">
         {comment.map((commentItem) => (
           <ul key={commentItem._id}>
             <li>{commentItem.content}</li>
