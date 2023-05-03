@@ -22,21 +22,29 @@ const Comment = ({ blogId }) => {
           user: userId,
         }
       );
-      setComment([...comment], response.data);
+      setComment([...comment, response.data]);
       setNewComment("");
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(comment);
-
   return (
     <div className="comments-container">
       <div className="comments">
         {comment.map((commentItem) => (
-          <ul key={commentItem._id}>
-            <li>{commentItem.content}</li>
+          <ul key={commentItem._id} className="comments-list">
+            {commentItem.user.avatarUrl ? (
+              <img
+                className="comment-avatar"
+                src={commentItem.user.avatarUrl}
+                alt=""
+              />
+            ) : null}
+            <div>
+              <p className="username">{commentItem.user.username}</p>
+              <li>{commentItem.content}</li>
+            </div>
           </ul>
         ))}
       </div>

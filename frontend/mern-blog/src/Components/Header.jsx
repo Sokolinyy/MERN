@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../pages/auth/AuthContext";
+import { UserContext } from "../Context/UserContext";
 
 const Header = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+
+  const { authenticated, setAuthenticated } = useAuth();
 
   // Switch overlay back and forth
   const toggleOverlay = () => {
@@ -41,6 +45,12 @@ const Header = () => {
     };
   }, []);
 
+  const logout = () => {
+    setAuthenticated(false);
+  };
+
+  const { user } = useContext(UserContext);
+
   return (
     <header className="header">
       <div
@@ -74,6 +84,27 @@ const Header = () => {
             >
               <li>Create New Blog +</li>
             </Link>
+            {!authenticated ? (
+              <>
+                <Link to="/login" className="header_link" onClick={hideOverlay}>
+                  <li>Login</li>
+                </Link>
+                <Link
+                  to="/register"
+                  className="header_link"
+                  onClick={hideOverlay}
+                >
+                  <li>Register</li>
+                </Link>
+              </>
+            ) : (
+              <>
+                {user ? (
+                  <img className="avatar" src={user.avatarUrl} alt="" />
+                ) : null}
+                <button onClick={logout}>Logout</button>
+              </>
+            )}
           </ul>
         </div>
       </nav>

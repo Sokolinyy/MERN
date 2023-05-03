@@ -63,7 +63,7 @@ const CreateBlog = () => {
         </div>
       )}
       {/* Form */}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <label htmlFor="imageUrl" id="imageUrl">
           Image URL:
         </label>
@@ -88,8 +88,9 @@ const CreateBlog = () => {
           id="theme"
           value={formData.snippet}
           onChange={handleChange}
+          defaultValue=""
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Choose theme:
           </option>
           <option value="beauty">Beauty</option>
