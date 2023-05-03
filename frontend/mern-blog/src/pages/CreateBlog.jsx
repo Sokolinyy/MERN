@@ -37,10 +37,7 @@ const CreateBlog = () => {
 
     try {
       // Send a POST request with the form data to the API endpoint (backend)
-      await axios.post(
-        `https://mern-sokolinyy.onrender.com/create-blog`,
-        formData
-      );
+      await axios.post(`http://localhost:4000/create-blog`, formData);
       // If the request is successful, navigate to the homepage
       navigate("/");
       // If there's an error, log it to the console
@@ -66,7 +63,7 @@ const CreateBlog = () => {
         </div>
       )}
       {/* Form */}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <label htmlFor="imageUrl" id="imageUrl">
           Image URL:
         </label>
@@ -91,8 +88,9 @@ const CreateBlog = () => {
           id="theme"
           value={formData.snippet}
           onChange={handleChange}
+          defaultValue=""
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Choose theme:
           </option>
           <option value="beauty">Beauty</option>

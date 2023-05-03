@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
+import LogoutButton from "../helpers/LogoutButton";
+import { useAuth } from "../pages/auth/AuthContext";
+import { useUser } from "../Context/UserContext";
 
 const Header = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
@@ -41,6 +45,11 @@ const Header = () => {
     };
   }, []);
 
+  const { authenticated, setAuthenticated } = useAuth();
+  const { user } = useUser();
+
+  console.log(user);
+
   return (
     <header className="header">
       <div
@@ -74,6 +83,27 @@ const Header = () => {
             >
               <li>Create New Blog +</li>
             </Link>
+            {!authenticated ? (
+              <>
+                <Link to="/login" className="header_link" onClick={hideOverlay}>
+                  <li>Login</li>
+                </Link>
+                <Link
+                  to="/register"
+                  className="header_link"
+                  onClick={hideOverlay}
+                >
+                  <li>Register</li>
+                </Link>
+              </>
+            ) : (
+              <>
+                {user && user.avatarUrl ? (
+                  <img className="avatar" src={user.avatarUrl} alt="" />
+                ) : null}
+                <LogoutButton />
+              </>
+            )}
           </ul>
         </div>
       </nav>

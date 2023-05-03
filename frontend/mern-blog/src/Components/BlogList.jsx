@@ -13,9 +13,7 @@ const BlogList = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(
-          "https://mern-sokolinyy.onrender.com/"
-        );
+        const response = await axios.get("http://localhost:4000/");
         // If there is no blogs, display message from backend "There is no blogs"
         if (response.data.message) {
           setMessage(response.data.message);
@@ -39,10 +37,9 @@ const BlogList = () => {
       ) : (
         // Otherwise map through blogs data, and display it on the page
         blogs.map((blog) => (
-          <div className="blog-list-link">
+          <div className="blog-list-link" key={blog._id}>
             <div
               className="blog-list-items"
-              key={blog._id}
               onClick={() => {
                 navigate(`/blog/${blog._id}`);
               }}

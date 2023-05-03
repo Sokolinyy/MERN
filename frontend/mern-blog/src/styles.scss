@@ -3,7 +3,7 @@
 
 html {
   @media screen and (max-width: 800px) {
-    padding: 0 !important;
+    padding: 0;
   }
 }
 
@@ -11,9 +11,10 @@ html {
   padding: 0px 50px;
   font-family: "Open Sans", sans-serif;
   margin-top: 5vh;
+  margin-top: 17vh;
 
   @media screen and (max-width: 800px) {
-    margin-top: 15vh;
+    margin-top: 18vh;
   }
 }
 
@@ -129,6 +130,7 @@ html {
 
     nav {
       padding: 20px;
+      align-items: center;
     }
   }
 
@@ -138,6 +140,7 @@ html {
     font-size: 20px;
     list-style: none;
     margin-right: 40px;
+    align-items: center;
 
     @media screen and (max-width: 800px) {
       position: absolute;
@@ -154,7 +157,7 @@ html {
     }
 
     @media screen and (max-width: 500px) {
-      top: 15vh;
+      top: 17vh;
     }
 
     .header_link {
@@ -169,6 +172,7 @@ html {
       padding: 10px 40px;
       transition: all 0.35s;
       text-align: center;
+      margin: 0;
 
       @media screen and (max-width: 800px) {
         background-color: rgb(63, 63, 63);
@@ -192,6 +196,12 @@ html {
         }
       }
     }
+
+    .avatar {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 
@@ -200,7 +210,6 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 14vh;
 
   @media screen and (max-width: 500px) {
     margin-top: 0vh;
@@ -209,77 +218,76 @@ html {
   @media screen and (max-width: 800px) {
     margin-top: 0vh;
   }
+}
+.blog-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  width: 50%;
+  bottom: 10px;
+  font-size: 20px;
+  padding: 5px 0px;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: rgba(253, 0, 0, 0.34);
+  color: black;
 
-  .blog-error {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    text-align: center;
-    width: 50%;
-    bottom: 10px;
+  @media screen and (max-width: 500px) {
+    bottom: 0px;
+    width: 100%;
+  }
+
+  svg {
+    margin: 10px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  input,
+  textarea,
+  label {
     font-size: 20px;
-    padding: 5px 0px;
-    left: 50%;
-    transform: translate(-50%);
-    background-color: rgba(253, 0, 0, 0.34);
-    color: black;
+    padding: 10px 20px;
+    width: 50vw;
 
     @media screen and (max-width: 500px) {
-      bottom: 0px;
-      width: 100%;
-    }
-
-    svg {
-      margin: 10px;
+      width: 80vw;
     }
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  select {
+    width: 100%;
+    font-size: 20px;
+    padding: 10px 20px;
+  }
 
-    input,
-    textarea,
-    label {
-      font-size: 20px;
-      padding: 10px 20px;
-      width: 50vw;
+  textarea {
+    resize: vertical;
+    max-height: 25vh;
+  }
 
-      @media screen and (max-width: 500px) {
-        width: 80vw;
-      }
-    }
+  button {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 22px;
+    margin-top: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.35s;
 
-    select {
-      width: 100%;
-      font-size: 20px;
-      padding: 10px 20px;
-    }
-
-    textarea {
-      resize: vertical;
-      max-height: 25vh;
-    }
-
-    button {
-      background-color: black;
-      color: white;
+    &:hover {
+      color: black;
+      background-color: white;
       border: 1px solid black;
-      border-radius: 5px;
-      font-size: 22px;
-      margin-top: 30px;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: all 0.35s;
-
-      &:hover {
-        color: black;
-        background-color: white;
-        border: 1px solid black;
-      }
     }
   }
 }
@@ -317,7 +325,6 @@ html {
     max-width: 80%;
     transition: all 0.35s;
     background-color: rgb(238, 238, 238);
-    margin-top: 15vh;
 
     @media screen and (max-width: 757px) {
       display: flex;
@@ -376,7 +383,6 @@ html {
 }
 
 .blog-page {
-  margin-top: 14vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -412,4 +418,30 @@ html {
       padding: 0px 20px;
     }
   }
+}
+
+.comments-container {
+  .comments {
+    display: flex;
+    flex-direction: column;
+
+    li {
+      list-style: none;
+    }
+
+    .comments-list {
+      display: flex;
+      align-items: center;
+    }
+
+    .comment-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      padding: 10px;
+    }
+  }
+}
+.avatar {
+  cursor: pointer;
 }
