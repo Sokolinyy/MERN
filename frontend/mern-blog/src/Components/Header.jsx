@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../pages/auth/AuthContext";
 import { UserContext } from "../Context/UserContext";
+import LogoutButton from "../helpers/LogoutButton";
+import { useAuth } from "../pages/auth/AuthContext";
+import { useUser } from "../Context/UserContext";
 
 const Header = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-
-  const { authenticated, setAuthenticated } = useAuth();
 
   // Switch overlay back and forth
   const toggleOverlay = () => {
@@ -45,11 +45,10 @@ const Header = () => {
     };
   }, []);
 
-  const logout = () => {
-    setAuthenticated(false);
-  };
+  const { authenticated, setAuthenticated } = useAuth();
+  const { user } = useUser();
 
-  const { user } = useContext(UserContext);
+  console.log(user);
 
   return (
     <header className="header">
@@ -99,10 +98,10 @@ const Header = () => {
               </>
             ) : (
               <>
-                {user ? (
+                {user && user.avatarUrl ? (
                   <img className="avatar" src={user.avatarUrl} alt="" />
                 ) : null}
-                <button onClick={logout}>Logout</button>
+                <LogoutButton />
               </>
             )}
           </ul>

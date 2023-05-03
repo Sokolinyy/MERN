@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { setAuthenticated } = useAuth();
@@ -15,6 +16,8 @@ const Login = () => {
   };
 
   const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,7 +36,7 @@ const Login = () => {
       setMessage("Successful");
       setAuthenticated(true);
       localStorage.setItem("token", response.data.token);
-      console.log(response.data.token);
+      navigate("/");
     } catch (error) {
       console.error(error);
       setMessage();

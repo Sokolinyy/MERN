@@ -4,6 +4,10 @@ import axios from "axios";
 
 export const UserContext = createContext(null);
 
+export const useUser = () => {
+  return useContext(UserContext);
+};
+
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
